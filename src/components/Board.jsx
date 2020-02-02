@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Thread from './Thread'
+
 const Board = props => {
   return (
     <div>
-      Ima Board!
+      {}
     </div>
   )
 }
