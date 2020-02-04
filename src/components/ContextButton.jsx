@@ -3,11 +3,15 @@ import { Button, InputGroup, Form, Col } from 'react-bootstrap'
 
 const ContextButton = props => {
   const [buttonOpen, setButtonOpen] = useState(false)
+  const handleFormSubmit = event => {
+    event.preventDefault()
+    console.log(event);
+  }
   const boldButton = () => {
     return (
-      <Form>
+      <Form onSubmit={handleFormSubmit}>
         <InputGroup>
-          <Form.Control placeholder="Username"/>
+          <Form.Control placeholder="Name"/>
           <Form.Control placeholder="Subject"/>
         </InputGroup>
         <InputGroup>
@@ -18,7 +22,7 @@ const ContextButton = props => {
         </InputGroup>
         <Form.Control placeholder="Post text..." as="textarea"/>
         <Form.Row>
-          <Button as="submit">Submit</Button>
+          <Button type="submit">Submit</Button>
           <Button onClick={()=>setButtonOpen(false)} variant="outline-primary">Cancel</Button>
         </Form.Row>
       </Form>
