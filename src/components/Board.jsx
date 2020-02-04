@@ -1,33 +1,20 @@
 import React from 'react'
+import { Card, Row, Col } from 'react-bootstrap'
+import { A, useRoutes } from 'hookrouter'
 
 import Thread from './Thread'
-import { Card, Row, Col } from 'react-bootstrap'
+import PreviewThreads from './PreviewThreads'
+
+const routes = {
+  '/': () => props => <PreviewThreads />,
+  '/:thread': ({thread}) => props => <Thread />
+}
 
 const Board = props => {
-  const threadPreview = () => {
-    return (
-      <Card as={Col} xs={6} md={4} lg={2}>
-        <Card.Img variant="top" src="https://i.ytimg.com/vi/-NMPLAZ5JBI/maxresdefault.jpg"/>
-        <Card.Body>
-          <Card.Title>
-            Im a thread preview!
-          </Card.Title>
-          <Card.Text>
-            lorem ipsum potatoeum
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    )
-  }
+  const routeResult = useRoutes(routes)
   return (
     <Row>
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
+      {routeResult()}
     </Row>
   )
 }
