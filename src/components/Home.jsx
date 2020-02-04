@@ -1,8 +1,14 @@
 import React from 'react'
+import { A } from 'hookrouter'
 
 import { Jumbotron } from "react-bootstrap"
 
 const Home = props => {
+  const boardLinks = () => {
+    return (
+      <A href="test">Ima board link</A>
+    )
+  }
   return (
     <>
       <Jumbotron>
@@ -16,7 +22,13 @@ const Home = props => {
           We are working very hard to get this site off the ground. Check back again soon!
         </p>
       </Jumbotron>
-      Board list goes here.
+      {boardLinks()}
+      {boardLinks()}
+      {boardLinks()}
+      {boardLinks()}
+      {boardLinks()}
+      {boardLinks()}
+      {boardLinks()}
     </>
   )
 }
