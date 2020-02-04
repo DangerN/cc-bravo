@@ -1,12 +1,12 @@
 import React from 'react'
 
 import Thread from './Thread'
-import { Card } from 'react-bootstrap'
+import { Card, Row, Col } from 'react-bootstrap'
 
 const Board = props => {
   const threadPreview = () => {
     return (
-      <Card style={{width: '18rem'}}>
+      <Card as={Col} xs={6} md={4} lg={2}>
         <Card.Img variant="top" src="https://i.ytimg.com/vi/-NMPLAZ5JBI/maxresdefault.jpg"/>
         <Card.Body>
           <Card.Title>
@@ -20,9 +20,15 @@ const Board = props => {
     )
   }
   return (
-    <div>
+    <Row>
       {threadPreview()}
-    </div>
+      {threadPreview()}
+      {threadPreview()}
+      {threadPreview()}
+      {threadPreview()}
+      {threadPreview()}
+      {threadPreview()}
+    </Row>
   )
 }
 
