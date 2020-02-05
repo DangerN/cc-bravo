@@ -7,6 +7,7 @@ import ChanNav from './components/NavBar'
 import ContextButton from './components/ContextButton'
 import Home from './components/Home'
 import Board from './components/Board'
+import Settings from './components/Settings'
 
 const routes = {
   '/': () => props => <Home {...props} />,

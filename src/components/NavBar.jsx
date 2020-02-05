@@ -1,10 +1,14 @@
-import React from 'react'
-import { Navbar, NavDropdown, Nav, Col } from 'react-bootstrap'
+import React, { useState } from 'react'
+import { Navbar, NavDropdown, Nav, Col, Button } from 'react-bootstrap'
 import { A } from 'hookrouter'
 
 import Banner from './Banner'
+import Settings from './Settings'
 
 const ChanNav = (props) => {
+  const [settingsVis, setSettingsVis] = useState(false)
+  const showSettings = () => setSettingsVis(true)
+
   return (
     <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
       <Col xs={2} md={2}>
@@ -19,7 +23,8 @@ const ChanNav = (props) => {
       <Navbar.Toggle/>
       <Navbar.Collapse as={Col} xs={4} md={2}>
         <Nav >
-          <Nav.Link>Settings</Nav.Link>
+          <Nav.Link onClick={showSettings}>Settings</Nav.Link>
+          <Settings visible={settingsVis} setVisible={setSettingsVis}/>
           <Nav.Link>Account</Nav.Link>
         </Nav>
       </Navbar.Collapse>
