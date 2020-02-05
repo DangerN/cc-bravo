@@ -4,8 +4,6 @@ import Post from './Post'
 
 const Thread = props => {
   const displayPosts = postData => {
-    console.log(postData);
-    console.log(postData.image);
     return (
       <Post image={postData.image}/>
     )
