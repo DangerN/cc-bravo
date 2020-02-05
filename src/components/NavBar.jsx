@@ -6,8 +6,12 @@ import Banner from './Banner'
 import Settings from './Settings'
 
 const ChanNav = (props) => {
+  const { settingsDis, settingsState } = props
+
   const [settingsVis, setSettingsVis] = useState(false)
   const showSettings = () => setSettingsVis(true)
+
+
 
   return (
     <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
@@ -24,7 +28,7 @@ const ChanNav = (props) => {
       <Navbar.Collapse as={Col} xs={4} md={2}>
         <Nav >
           <Nav.Link onClick={showSettings}>Settings</Nav.Link>
-          <Settings visible={settingsVis} setVisible={setSettingsVis}/>
+          <Settings settingsState={settingsState} settingsDis={settingsDis} visible={settingsVis} setVisible={setSettingsVis }/>
           <Nav.Link>Account</Nav.Link>
         </Nav>
       </Navbar.Collapse>

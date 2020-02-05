@@ -9,6 +9,13 @@ import Home from './components/Home'
 import Board from './components/Board'
 import Settings from './components/Settings'
 
+import {THEME} from './resources/constants'
+import useSettings from './hooks/useSettings'
+
+// import "bootswatch/dist/flatly/bootstrap.min.css"
+// import "bootswatch/dist/darkly/bootstrap.min.css"
+
+
 const routes = {
   '/': () => props => <Home {...props} />,
   '/:board*': ({board}) => (props) => <Board board={board} {...props} />
@@ -16,12 +23,16 @@ const routes = {
 
 export default () => {
   const match = useRoutes(routes)
-
+  const [settingsState, settingsDispatch] = useSettings()
+  console.log(settingsState);
   return (
-    <Container>
-      <ChanNav />
-      {match()}
-      <ContextButton />
-    </Container>
+    <>
+      { THEME[settingsState.theme] }
+      <Container>
+        <ChanNav settingsDis={settingsDispatch} settingsState={settingsState}/>
+        {match()}
+        <ContextButton />
+      </Container>
+    </>
   )
 }

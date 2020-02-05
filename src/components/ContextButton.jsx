@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import { Button, InputGroup, Form, Col } from 'react-bootstrap'
 
 const ContextButton = props => {
+  const buttonStyle = {
+    position: "fixed",
+    bottom: "5vh",
+    right: "5vw"
+  }
   const [buttonOpen, setButtonOpen] = useState(false)
   const handleFormSubmit = event => {
     event.preventDefault()
@@ -23,18 +28,18 @@ const ContextButton = props => {
         <Form.Control placeholder="Post text..." as="textarea"/>
         <Form.Row>
           <Button type="submit">Submit</Button>
-          <Button onClick={()=>setButtonOpen(false)} variant="outline-primary">Cancel</Button>
+          <Button onClick={()=>setButtonOpen(false)} variant="primary">Cancel</Button>
         </Form.Row>
       </Form>
     )
   }
   const shyButton = () => {
     return (
-        <Button onClick={()=>setButtonOpen(true)} variant="outline-primary">New</Button>
+        <Button onClick={()=>setButtonOpen(true)} variant="primary">New</Button>
     )
   }
   return (
-    <div className={ buttonOpen ? "" : "fixed-bottom"}>
+    <div style={buttonStyle} md={6}>
       { buttonOpen ? boldButton() : shyButton() }
     </div>
   )
