@@ -12,7 +12,7 @@ const ChanNav = (props) => {
   return (
     <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
       <Col xs={2} md={2}>
-        <Navbar.Brand href="/">CloudChan</Navbar.Brand>
+        <Navbar.Brand as={A} href="/">CloudChan</Navbar.Brand>
       </Col>
       <NavDropdown as={Col} xs={2} md={2} title="Boards" id="collasible-nav-dropdown">
         <NavDropdown.Item as={A} href="/fit">fit</NavDropdown.Item>
