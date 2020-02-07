@@ -26,6 +26,7 @@ const ContextButton = props => {
             <Button variant="secondary">Upload File</Button>
           </InputGroup.Append>
         </InputGroup>
+        <input type="file" />
         <Form.Control placeholder="Post text..." as="textarea"/>
         <Form.Row>
           <Button type="submit">Submit</Button>
