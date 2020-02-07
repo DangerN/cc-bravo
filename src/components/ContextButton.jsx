@@ -1,11 +1,17 @@
 import React, { useState } from 'react'
 import { Button, InputGroup, Form, Col } from 'react-bootstrap'
+import { usePath } from 'hookrouter'
+
+import { BUTTON } from '../resources/constants.jsx'
 
 const ContextButton = props => {
+  // determine button context from current path
+  const context = BUTTON.CONTEXT(usePath())
+
   const buttonStyle = {
     position: "fixed",
     bottom: "5vh",
-    right: "5vw"
+    right: "5vw",
   }
   const [buttonOpen, setButtonOpen] = useState(false)
   const handleFormSubmit = event => {
@@ -39,7 +45,7 @@ const ContextButton = props => {
     )
   }
   return (
-    <div style={buttonStyle} md={6}>
+    <div style={BUTTON.STYLE[context]} md={6}>
       { buttonOpen ? boldButton() : shyButton() }
     </div>
   )
