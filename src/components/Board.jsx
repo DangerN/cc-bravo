@@ -13,7 +13,7 @@ const routes = {
 const Board = props => {
   const routeResult = useRoutes(routes)
   return (
-    <Row>
+    <Row >
       {routeResult()}
     </Row>
   )
