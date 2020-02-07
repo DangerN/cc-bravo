@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navbar, NavDropdown, Nav, Col, Button } from 'react-bootstrap'
+import { Navbar, NavDropdown, Nav, Col, Button, Row } from 'react-bootstrap'
 import { A } from 'hookrouter'
 
 import Banner from './Banner'
@@ -14,7 +14,7 @@ const ChanNav = (props) => {
 
 
   return (
-    <Navbar collapseOnSelect style={{justifyContent: "space-between", margin: "0px -15px"}} varient="dark" bg="light" expand="lg" sticky="top">
+    <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
       <Col xs={2} md={2}>
         <Navbar.Brand as={A} href="/">CloudChan</Navbar.Brand>
       </Col>

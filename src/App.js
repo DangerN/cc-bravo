@@ -33,8 +33,8 @@ export default () => {
   return (
     <>
       { THEME[settingsState.theme] }
+      <ChanNav settingsDis={settingsDispatch} settingsState={settingsState}/>
       <Container >
-        <ChanNav settingsDis={settingsDispatch} settingsState={settingsState}/>
         {match()}
         <ContextButton />
       </Container>
