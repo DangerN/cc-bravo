@@ -15,20 +15,19 @@ export const BUTTON = {
   },
   STYLE: {
     'home': {
-      position: "fixed",
-      bottom: "5vh",
-      right: "5vw",
-      display: 'none'
+      justifyContent: 'flex-end',
+      display: 'none',
     },
     'board': {
-      position: "fixed",
-      bottom: "5vh",
-      right: "5vw",
+      justifyContent: 'flex-end'
     },
     'thread': {
-      position: "fixed",
-      bottom: "5vh",
-      right: "5vw",
+      justifyContent: 'flex-end'
     }
+  },
+  REQS: {
+    'home': 'ee',
+    'board': '',
+    'thread': 'eadfa',
   }
 }

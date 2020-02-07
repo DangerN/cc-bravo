@@ -11,8 +11,6 @@ const ChanNav = (props) => {
   const [settingsVis, setSettingsVis] = useState(false)
   const showSettings = () => setSettingsVis(true)
 
-
-
   return (
     <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
       <Col xs={2} md={2}>

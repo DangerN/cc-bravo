@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, InputGroup, Form, Col, Container } from 'react-bootstrap'
+import { Button, InputGroup, Form, Col, Container, Navbar } from 'react-bootstrap'
 import { usePath } from 'hookrouter'
 
 import { BUTTON } from '../resources/constants.jsx'
@@ -36,13 +36,13 @@ const ContextButton = props => {
   }
   const shyButton = () => {
     return (
-        <Button onClick={()=>setButtonOpen(true)} variant="primary">New</Button>
+        <Button onClick={()=>setButtonOpen(true)} size="lg" variant="primary">New</Button>
     )
   }
   return (
-    <>
+    <Navbar fixed="bottom" style={BUTTON.STYLE[context]}>
       { buttonOpen ? boldButton() : shyButton() }
-    </>
+    </Navbar>
   )
 }
 
