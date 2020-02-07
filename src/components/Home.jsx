@@ -16,7 +16,7 @@ const Home = props => {
           Welcome to CloudChan!
         </h1>
         <p>
-          Where the facts are made up and the up votes don't matter.
+          Where the facts are made up and the up-votes don't matter.
         </p>
         <p>
           We are working very hard to get this site off the ground. Check back again soon!
