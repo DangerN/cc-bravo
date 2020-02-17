@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Row, Col } from 'react-bootstrap'
-import { A, useRoutes } from 'hookrouter'
+import { A, useRoutes, usePath } from 'hookrouter'
 
 import Thread from './Thread'
 import PreviewThreads from './PreviewThreads'
@@ -12,6 +12,7 @@ const routes = {
 
 const Board = props => {
   const routeResult = useRoutes(routes)
+  console.log(usePath());
   return (
     <Row >
       {routeResult()}

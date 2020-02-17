@@ -6,7 +6,9 @@ import { Jumbotron } from "react-bootstrap"
 const Home = props => {
   const boardLinks = () => {
     return (
-      <A href="test">Ima board link</A>
+      <div>
+        <A href="test">Ima board link</A>
+      </div>
     )
   }
   return (

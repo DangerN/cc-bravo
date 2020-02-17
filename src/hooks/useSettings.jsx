@@ -3,11 +3,14 @@ import React, { useReducer, useEffect } from 'react'
 const useSettings = () => {
   const initialState = {
     theme: "light",
+    activeBoard: ""
   }
   const reducer = (state, action) => {
     switch (action.type) {
       case 'setTheme':
         return {...state, theme: action.theme}
+      case 'setActiveBoard':
+        return {...state, activeBoard: action.board}
       case 'loadStored':
         return action.stored
       default:
