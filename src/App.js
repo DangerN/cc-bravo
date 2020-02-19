@@ -22,6 +22,8 @@ const routes = {
   '/:board*': ({board}) => props => <Board board={board} {...props} />
 }
 
+const BOARD_URL = process.env.REACT_APP_BOARD_BASE_URL
+
 export default () => {
   const match = useRoutes(routes)
 
@@ -41,7 +43,7 @@ export default () => {
     onClose: event => setSocketState(0),
     onError: error => console.log('Socket Error', error)
   }) , [setSocketState])
-  const [sendMessage, lastMessage, readyState] = useWebSocket('ws://0.0.0.0:42042', options)
+  const [sendMessage, lastMessage, readyState] = useWebSocket(BOARD_URL, options)
   useEffect(() => {
     if (lastMessage !== null) {
       setMessageHistory(previous => previous.concat(lastMessage))

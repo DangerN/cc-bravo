@@ -7,7 +7,7 @@ import PreviewThreads from './PreviewThreads'
 
 const routes = {
   '/': () => props => <PreviewThreads {...props} />,
-  '/:thread': ({thread}) => props => <Thread />
+  '/:thread': ({thread}) => props => <Thread threadData={props.boardData.threads[thread]}/>
 }
 
 const Board = props => {

@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Card, Col } from 'react-bootstrap'
 
+const BASE_PATH = process.env.REACT_APP_MEDIA_BASE_URL
+
 const Post = props => {
+  const { id, badges, flags, text, media_name, name, subject } = props
+  const [ showThumb, setShowThumb ] = useState(true)
+  console.log(props);
+
+  const postImage = () => {
+    return showThumb
+      ? <img style={{float: "left", margin: ".5rem"}} onClick={()=>setShowThumb(false)} src={`${BASE_PATH}/thumb/${media_name}`}/>
+      : <img style={{float: "", margin: ".5rem", maxWidth: "90%"}} onClick={()=>setShowThumb(true)} src={`${BASE_PATH}/media/${media_name}`}/>
+  }
+
   return (
     <Card>
       <Card.Body>
       <Card.Subtitle>
-        <strong>{props.name ? props.name : "Anonymouse"}</strong>
-        {" "}
-        No.{props.id}
-        {" "}
-        {props.subject ? props.subject : null}
+        <strong>{ name }</strong>
+        { " " }
+        No.{ id }
+        { " " }
+        { subject ? props.subject : null }
       </Card.Subtitle>
-      { props.image ? <img style={{float: "left"}}width={256} src={props.image}/> : null}
-        I am a post Lorem ipsum dolor amet prism leggings bitters vegan meggings raclette letterpress fingerstache sartorial. Polaroid taiyaki kitsch, godard sustainable lyft narwhal waistcoat venmo kombucha offal umami. Poutine raclette truffaut, gluten-free intelligentsia church-key venmo taxidermy tacos poke bicycle rights. Tbh beard you probably haven't heard of them, portland gentrify twee cornhole art party ramps kinfolk pinterest. Kale chips asymmetrical pitchfork bushwick. Neutra next level snackwave taiyaki, etsy activated charcoal quinoa subway tile roof party.
-
-Pabst pour-over vape vegan. Slow-carb master cleanse wolf jean shorts wayfarers palo santo chicharrones hot chicken readymade raw denim distillery. Truffaut meh kale chips offal, marfa tbh vinyl chia cardigan. Brooklyn distillery trust fund, meh shaman bicycle rights adaptogen. Tofu vaporware seitan, williamsburg everyday carry stumptown la croix hammock flexitarian narwhal.
+        { media_name ? postImage() : null }
+        { showThumb ? null : <br/> }
+        { text }
       </Card.Body>
     </Card>
   )
