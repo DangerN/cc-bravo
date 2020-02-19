@@ -13,16 +13,16 @@ const PreviewThreads = props => {
   const threadPreviews = () => {
     return Object.keys(threads).map(thread => {
       const threadData = threads[thread]
-      console.log(threadData);
+      const firstPost = threadData.posts[0]
       return (
-        <Card as={Col} xs={6} md={4} lg={2}>
-          <Card.Img src="http://0.0.0.0:3001/media/cute-latte"/>
-          <Card.Body onClick={()=>navigate(`{boardData.id}/${threadData.id}`)}>
+        <Card as={Col} xs={6} md={4} lg={2} key={threadData.id}>
+          <Card.Img src={`${BASE_PATH}/media/${firstPost.media_name}`}/>
+          <Card.Body onClick={()=>navigate(`${boardData.id}/${threadData.id}`)}>
             <Card.Title>
-              Im a thread preview!
+              {firstPost.subject}
             </Card.Title>
             <Card.Text>
-              lorem ipsum potatoeum
+              {firstPost.text}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -65,13 +65,7 @@ const PreviewThreads = props => {
   }
   return (
     <>
-      {threadPreview()}
-      {threadPreview2()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
-      {threadPreview()}
+      {threadPreviews()}
     </>
   )
 }
