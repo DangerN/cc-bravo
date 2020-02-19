@@ -9,7 +9,8 @@ const NEW_URL = `${process.env.REACT_APP_BOARD_POST_URL}/new`
 
 const ContextButton = props => {
   // determine button context from current path
-  const context = BUTTON.CONTEXT(usePath())
+  const path = usePath()
+  const context = BUTTON.CONTEXT(path)
 
   const [buttonOpen, setButtonOpen] = useState(false)
   const [text, setText] = useState('')
@@ -24,11 +25,14 @@ const ContextButton = props => {
 
   const handleFormSubmit = event => {
     event.preventDefault()
+    const pathChunks = path.split('/')
     const data = new FormData()
     data.append('name', name)
     data.append('text', text)
     data.append('subject', subject)
     data.append('file', file)
+    data.append('board', pathChunks[1])
+    data.append('thread', pathChunks[2])
     axios.post( NEW_URL, data, {
       headers: {
         'Content-Type': 'multipart/form-data'

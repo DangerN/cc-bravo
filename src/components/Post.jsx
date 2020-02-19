@@ -12,6 +12,8 @@ const Post = props => {
       ? <img style={{float: "left", margin: ".5rem"}} onClick={()=>setShowThumb(false)} src={`${BASE_PATH}/thumb/${media_name}`}/>
       : <img style={{float: "", margin: ".5rem", maxWidth: "90%"}} onClick={()=>setShowThumb(true)} src={`${BASE_PATH}/media/${media_name}`}/>
   }
+  console.log(media_name);
+  console.log(media_name.length);
 
   return (
     <Card>
@@ -23,7 +25,7 @@ const Post = props => {
         { " " }
         { subject ? props.subject : null }
       </Card.Subtitle>
-        { media_name ? postImage() : null }
+        { media_name.length > 1 ? postImage() : null }
         { showThumb ? null : <br/> }
         { text }
       </Card.Body>

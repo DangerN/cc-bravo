@@ -11,6 +11,8 @@ const useSettings = () => {
       case 'boardDump':
         const newState = {...state, ...action.payload.boardDump}
         return newState
+      case 'fullImage':
+        return {...state, ...action.payload.image}
       default:
         throw new Error("Board Dispatch Error, check dispatch type")
     }
