@@ -1,33 +1,50 @@
 import React, { useState } from 'react'
 import { Button, InputGroup, Form, Col, Container, Navbar } from 'react-bootstrap'
 import { usePath } from 'hookrouter'
+import axios from 'axios'
 
 import { BUTTON } from '../resources/constants.jsx'
+
+const NEW_URL = `${process.env.REACT_APP_BOARD_POST_URL}/new`
 
 const ContextButton = props => {
   // determine button context from current path
   const context = BUTTON.CONTEXT(usePath())
 
   const [buttonOpen, setButtonOpen] = useState(false)
+  const [text, setText] = useState('')
+  const [file, setFile] = useState()
+  const [name, setName] = useState('')
+  const [subject, setSubject] = useState('')
+
+  const handleText = event => setText(event.target.value)
+  const handleFile = event => setFile(event.target.files[0])
+  const handleName = event => setName(event.target.value)
+  const handleSubject = event => setSubject(event.target.value)
+
   const handleFormSubmit = event => {
     event.preventDefault()
-    console.log(event);
+    const data = new FormData()
+    data.append('name', name)
+    data.append('text', text)
+    data.append('subject', subject)
+    data.append('file', file)
+    axios.post( NEW_URL, data, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    } )
   }
+
   const boldButton = () => {
     return (
       <Form onSubmit={handleFormSubmit}>
         <InputGroup>
-          <Form.Control placeholder="Name"/>
-          <Form.Control placeholder="Subject"/>
+          <Form.Control name='name' onChange={handleName} placeholder="Name"/>
+          <Form.Control name='subject' onChange={handleSubject} placeholder="Subject"/>
         </InputGroup>
-        <InputGroup>
-          <Form.Control placeholder="Enter media link or"/>
-          <InputGroup.Append>
-            <Button variant="secondary">Upload File</Button>
-          </InputGroup.Append>
-        </InputGroup>
-        <input type="file" />
-        <Form.Control placeholder="Post text..." as="textarea"/>
+        <input type="file" name='file' onChange={handleFile}/>
+        <Form.Control name='text' onChange={handleText} placeholder="Post text..." as="textarea"/>
         <Form.Row>
           <Button type="submit">Submit</Button>
           <Button onClick={()=>setButtonOpen(false)} variant="primary">Cancel</Button>

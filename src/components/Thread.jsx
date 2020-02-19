@@ -4,7 +4,7 @@ import Post from './Post'
 
 const Thread = props => {
   const { threadData } = props
-  console.log(props);
+  
   const displayPosts = postData => {
     return threadData.posts.map(post => <Post key={post.id} {...post} />)
   }

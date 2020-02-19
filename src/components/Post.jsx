@@ -6,7 +6,6 @@ const BASE_PATH = process.env.REACT_APP_MEDIA_BASE_URL
 const Post = props => {
   const { id, badges, flags, text, media_name, name, subject } = props
   const [ showThumb, setShowThumb ] = useState(true)
-  console.log(props);
 
   const postImage = () => {
     return showThumb
