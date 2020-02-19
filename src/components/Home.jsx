@@ -4,12 +4,11 @@ import { A } from 'hookrouter'
 import { Jumbotron } from "react-bootstrap"
 
 const Home = props => {
+  const { boardList } = props
   const boardLinks = () => {
-    return (
-      <div>
-        <A href="test">Ima board link</A>
-      </div>
-    )
+    return Object.keys(boardList).map(board=>{
+      return <div key={`${board}-link`}><A  href={`/${board}`}>{ boardList[board].name }</A></div>
+    })
   }
   return (
     <>
@@ -24,12 +23,6 @@ const Home = props => {
           We are working very hard to get this site off the ground. Check back again soon!
         </p>
       </Jumbotron>
-      {boardLinks()}
-      {boardLinks()}
-      {boardLinks()}
-      {boardLinks()}
-      {boardLinks()}
-      {boardLinks()}
       {boardLinks()}
     </>
   )

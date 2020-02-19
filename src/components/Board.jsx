@@ -6,16 +6,17 @@ import Thread from './Thread'
 import PreviewThreads from './PreviewThreads'
 
 const routes = {
-  '/': () => props => <PreviewThreads />,
+  '/': () => props => <PreviewThreads {...props} />,
   '/:thread': ({thread}) => props => <Thread />
 }
 
 const Board = props => {
+  const { board } = props
+
   const routeResult = useRoutes(routes)
-  console.log(usePath());
   return (
     <Row >
-      {routeResult()}
+      {props[board] && routeResult({boardData: props[board]})}
     </Row>
   )
 }

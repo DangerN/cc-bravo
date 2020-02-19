@@ -6,10 +6,16 @@ import Banner from './Banner'
 import Settings from './Settings'
 
 const ChanNav = (props) => {
-  const { settingsDis, settingsState } = props
+  const { settingsDis, settingsState, boardList } = props
 
   const [settingsVis, setSettingsVis] = useState(false)
   const showSettings = () => setSettingsVis(true)
+
+  const navItems = () => {
+    return Object.keys(boardList).map(board=>{
+      return <NavDropdown.Item as={A} key={`${board}-link`} href={`/${board}`}>{ boardList[board].name }</NavDropdown.Item>
+    })
+  }
 
   return (
     <Navbar collapseOnSelect style={{justifyContent: "space-between"}} varient="dark" bg="light" expand="lg" sticky="top">
@@ -17,9 +23,7 @@ const ChanNav = (props) => {
         <Navbar.Brand as={A} href="/">CloudChan</Navbar.Brand>
       </Col>
       <NavDropdown as={Col} xs={2} md={2} title="Boards" id="collasible-nav-dropdown">
-        <NavDropdown.Item as={A} href="/fit">fit</NavDropdown.Item>
-        <NavDropdown.Item as={A} href="/pol">pol</NavDropdown.Item>
-        <NavDropdown.Item as={A} href="/ck">ck</NavDropdown.Item>
+        { navItems() }
       </NavDropdown>
       <Banner />
       <Navbar.Toggle/>

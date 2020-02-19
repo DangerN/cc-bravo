@@ -2,14 +2,17 @@ import React, { useReducer } from 'react'
 
 const useSettings = () => {
   const initialState = {
-    boardList: []
+    boardList: {}
   }
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'hmm':
-        return state
+      case 'boardList':
+        return {...state, boardList: action.payload.boardList}
+      case 'boardDump':
+        const newState = {...state, ...action.payload.boardDump}
+        return newState
       default:
-        throw new Error("yikes")
+        throw new Error("Board Dispatch Error, check dispatch type")
     }
   }
   const [state, dispatch] = useReducer(reducer, initialState)

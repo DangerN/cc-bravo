@@ -11,6 +11,7 @@ import Board from './components/Board'
 import Settings from './components/Settings'
 
 import { THEME } from './resources/constants'
+import { handleMessage } from './resources/handlers'
 import useSettings from './hooks/useSettings'
 import useBoards from './hooks/useBoards'
 
@@ -18,7 +19,7 @@ import "bootswatch/dist/flatly/bootstrap.min.css"
 
 const routes = {
   '/': () => props => <Home {...props} />,
-  '/:board*': ({board}) => (props) => <Board board={board} {...props} />
+  '/:board*': ({board}) => props => <Board board={board} {...props} />
 }
 
 export default () => {
@@ -44,6 +45,7 @@ export default () => {
   useEffect(() => {
     if (lastMessage !== null) {
       setMessageHistory(previous => previous.concat(lastMessage))
+      handleMessage(JSON.parse(lastMessage.data), boardsDispatch)
     }
   }, [lastMessage])
 
@@ -53,16 +55,17 @@ export default () => {
   // Populate the board list once connection to Charlie is open
   useEffect(() => {
     if (socketState === 1) {
-      sendMessage('boardList')
+      sendMessage('base')
+      sendMessage('test')
     }
   },[socketState])
 
   return (
     <>
       { THEME[settingsState.theme] }
-      <ChanNav settingsDis={settingsDispatch} settingsState={settingsState}/>
+      <ChanNav settingsDis={settingsDispatch} settingsState={settingsState} boardList={boards.boardList}/>
       <Container >
-        {match()}
+        {match(boards)}
         <ContextButton />
       </Container>
     </>
