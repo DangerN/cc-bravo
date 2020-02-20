@@ -60,7 +60,7 @@ const ContextButton = props => {
     console.log(file)
     console.log(text);
     return (
-      <Form onSubmit={handleFormSubmit}>
+      <Form onSubmit={handleFormSubmit} className='bg-light'>
         <InputGroup>
           <Form.Control name='name' onChange={handleName} value={name} placeholder="Name"/>
           <Form.Control name='subject' onChange={handleSubject} value={subject} placeholder="Subject"/>
