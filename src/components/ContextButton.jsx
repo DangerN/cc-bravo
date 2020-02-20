@@ -14,7 +14,7 @@ const ContextButton = props => {
 
   const [buttonOpen, setButtonOpen] = useState(false)
   const [text, setText] = useState('')
-  const [file, setFile] = useState()
+  const [file, setFile] = useState('')
   const [name, setName] = useState('')
   const [subject, setSubject] = useState('')
 
@@ -37,21 +37,39 @@ const ContextButton = props => {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
-    } )
+    } ).then(res=>{
+      console.log(res)
+      setButtonOpen(false)
+      clearForm()
+    })
+  }
+
+  const clearForm = () => {
+    setText("")
+    setFile("")
+    setName("")
+    setSubject("")
+  }
+
+  const handleCancel = event => {
+    setButtonOpen(false)
+    clearForm()
   }
 
   const boldButton = () => {
+    console.log(file)
+    console.log(text);
     return (
       <Form onSubmit={handleFormSubmit}>
         <InputGroup>
-          <Form.Control name='name' onChange={handleName} placeholder="Name"/>
-          <Form.Control name='subject' onChange={handleSubject} placeholder="Subject"/>
+          <Form.Control name='name' onChange={handleName} value={name} placeholder="Name"/>
+          <Form.Control name='subject' onChange={handleSubject} value={subject} placeholder="Subject"/>
         </InputGroup>
-        <input type="file" name='file' onChange={handleFile}/>
-        <Form.Control name='text' onChange={handleText} placeholder="Post text..." as="textarea"/>
+        <input type="file" name='file' onChange={handleFile} />
+        <Form.Control name='text' onChange={handleText} value={text} placeholder="Post text..." as="textarea"/>
         <Form.Row>
           <Button type="submit">Submit</Button>
-          <Button onClick={()=>setButtonOpen(false)} variant="primary">Cancel</Button>
+          <Button onClick={handleCancel} variant="primary">Cancel</Button>
         </Form.Row>
       </Form>
     )
