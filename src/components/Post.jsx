@@ -9,8 +9,8 @@ const Post = props => {
 
   const postImage = () => {
     return showThumb
-      ? <img style={{float: "left", margin: ".5rem"}} onClick={()=>setShowThumb(false)} src={`${BASE_PATH}/thumb/${media_name}`}/>
-      : <img style={{float: "", margin: ".5rem", maxWidth: "90%"}} onClick={()=>setShowThumb(true)} src={`${BASE_PATH}/media/${media_name}`}/>
+      ? <img style={{float: "left", margin: ".5rem", maxHeight: "128px", maxWidth: "128px"}} onClick={()=>setShowThumb(false)} src={`${BASE_PATH}/thumb/${media_name}`}/>
+      : <img style={{float: "", margin: ".5rem", maxWidth: "100%"}} onClick={()=>setShowThumb(true)} src={`${BASE_PATH}/media/${media_name}`}/>
   }
   console.log(media_name);
   console.log(media_name.length);
