@@ -12,6 +12,7 @@ const PreviewThreads = props => {
     return Object.keys(threads).map(thread => {
       const threadData = threads[thread]
       const firstPost = threadData.posts[0]
+      if (!firstPost) {return}
       return (
         <Card as={Col} xs={6} md={4} lg={2} key={threadData.id}>
           <Card.Img src={`${BASE_PATH}/thumb/${firstPost.media_name}`}/>

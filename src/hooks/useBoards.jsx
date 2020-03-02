@@ -2,7 +2,8 @@ import React, { useReducer } from 'react'
 
 const useSettings = () => {
   const initialState = {
-    boardList: {}
+    boardList: {},
+    boardSubs: ['wahtthefuck']
   }
   const reducer = (state, action) => {
     switch (action.type) {
@@ -11,10 +12,14 @@ const useSettings = () => {
       case 'boardDump':
         const newState = {...state, ...action.payload.boardDump}
         return newState
+      case 'addBoardSub':
+        console.log(action.payload.board);
+        return {...state, boardSubs: action.payload.board}
       case 'fullImage':
         return {...state, ...action.payload.image}
       default:
-        throw new Error("Board Dispatch Error, check dispatch type")
+        console.log("Dispatch type:", action.type);
+        throw new Error("Board Dispatch Error", action.type)
     }
   }
   const [state, dispatch] = useReducer(reducer, initialState)

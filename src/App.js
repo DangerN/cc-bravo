@@ -58,16 +58,26 @@ export default () => {
   useEffect(() => {
     if (socketState === 1) {
       sendMessage('base')
-      sendMessage('test')
     }
   },[socketState])
+
+  // Request information about specific board
+  const getBoard = (board) => {
+    console.log(boards);
+    console.log(board);
+    if(socketState === 1)
+    {
+      sendMessage(board)
+      boardsDispatch({type: "addBoardSub", payload: board})
+    }
+  }
 
   return (
     <>
       { THEME[settingsState.theme] }
       <ChanNav settingsDis={settingsDispatch} settingsState={settingsState} boardList={boards.boardList}/>
       <Container >
-        {match(boards)}
+        {match({...boards, getBoard: getBoard})}
         <ContextButton />
       </Container>
     </>

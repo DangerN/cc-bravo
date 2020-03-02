@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Card, Row, Col } from 'react-bootstrap'
 import { A, useRoutes, usePath } from 'hookrouter'
 
@@ -11,9 +11,16 @@ const routes = {
 }
 
 const Board = props => {
-  const { board } = props
+  const { board, getBoard } = props
+  console.log(props)
+  console.log(props[board])
+
+  useEffect(() => {
+    getBoard(board)
+  }, [])
 
   const routeResult = useRoutes(routes)
+
   return (
     <Row >
       {props[board] && routeResult({boardData: props[board]})}

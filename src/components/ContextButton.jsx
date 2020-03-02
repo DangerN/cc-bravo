@@ -57,8 +57,6 @@ const ContextButton = props => {
   }
 
   const boldButton = () => {
-    console.log(file)
-    console.log(text);
     return (
       <Form onSubmit={handleFormSubmit} className='bg-light'>
         <InputGroup>
