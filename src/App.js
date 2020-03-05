@@ -29,7 +29,9 @@ export default () => {
 
   // Initialize the settings hook, retrieve settings from localStorage and apply storedSettings to the settings state.
   const [settingsState, settingsDispatch] = useSettings()
+
   const storedSettings = JSON.parse(localStorage.getItem("cloudChanSettings"))
+
   useEffect(() => {
     const applyStoredSettings = () => settingsDispatch({type: 'loadStored', stored: storedSettings})
     storedSettings && applyStoredSettings()
@@ -37,13 +39,17 @@ export default () => {
 
   //Initialize the websocket connection to Charlie and set up message processing
   const [ socketState, setSocketState ] = useState(0)
+
   const [ messageHistory, setMessageHistory ] = useState([])
+
   const options = useMemo(() => ({
     onOpen: event => setSocketState(1),
     onClose: event => setSocketState(0),
     onError: error => console.log('Socket Error', error)
   }) , [setSocketState])
+
   const [sendMessage, lastMessage, readyState] = useWebSocket(BOARD_URL, options)
+
   useEffect(() => {
     if (lastMessage !== null) {
       setMessageHistory(previous => previous.concat(lastMessage))
@@ -71,6 +77,13 @@ export default () => {
       boardsDispatch({type: "addBoardSub", payload: board})
     }
   }
+
+  useEffect(() => {
+    if(socketState === 1)
+    {
+      sendMessage(boards.boardSubs[boards.boardSubs.length -1])
+    }
+  },[boards.boardSubs])
 
   return (
     <>
