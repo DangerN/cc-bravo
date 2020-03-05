@@ -3,7 +3,7 @@ import React, { useReducer } from 'react'
 const useSettings = () => {
   const initialState = {
     boardList: {},
-    boardSubs: ['wahtthefuck']
+    boardSubs: []
   }
   const reducer = (state, action) => {
     switch (action.type) {
