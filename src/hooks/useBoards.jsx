@@ -13,8 +13,7 @@ const useSettings = () => {
         const newState = {...state, ...action.payload.boardDump}
         return newState
       case 'addBoardSub':
-        console.log(action.payload.board);
-        return {...state, boardSubs: action.payload.board}
+        return {...state, boardSubs: [...state.boardSubs, action.payload]}
       case 'fullImage':
         return {...state, ...action.payload.image}
       default:
