@@ -11,13 +11,14 @@ const routes = {
 }
 
 const Board = props => {
-  const { board, getBoard } = props
+  const { board, boardsDispatch, boards } = props
   console.log(props)
   console.log(props[board])
 
+  //If current board is not in boards, add to subscription list.
   useEffect(() => {
-    getBoard(board)
-  }, [])
+    // boardsDispatch({type: "addBoardSub", payload: board})
+  },[])
 
   const routeResult = useRoutes(routes)
 

@@ -77,7 +77,7 @@ export default () => {
       { THEME[settingsState.theme] }
       <ChanNav settingsDis={settingsDispatch} settingsState={settingsState} boardList={boards.boardList}/>
       <Container >
-        {match({...boards, getBoard: getBoard})}
+        {match({...boards, boardsDispatch: boardsDispatch})}
         <ContextButton />
       </Container>
     </>
