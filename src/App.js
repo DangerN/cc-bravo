@@ -9,6 +9,7 @@ import ContextButton from './components/ContextButton'
 import Home from './components/Home'
 import Board from './components/Board'
 import Settings from './components/Settings'
+import About from './components/About'
 
 import { THEME } from './resources/constants'
 import { handleMessage } from './resources/handlers'
@@ -19,6 +20,7 @@ import "bootswatch/dist/flatly/bootstrap.min.css"
 
 const routes = {
   '/': () => props => <Home {...props} />,
+  '/about': () => props => <About {...props} />,
   '/:board*': ({board}) => props => <Board board={board} {...props} />
 }
 

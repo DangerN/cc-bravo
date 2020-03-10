@@ -7,6 +7,10 @@ export const THEME = {
 
 export const BUTTON = {
   CONTEXT: path => {
+    const homePaths = ['/about', '/account']
+    if (homePaths.includes(path)) {
+      return 'home'
+    }
     return {
       '/': 'home',
       '/_': 'board',
