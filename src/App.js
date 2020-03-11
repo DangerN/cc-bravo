@@ -10,6 +10,7 @@ import Home from './components/Home'
 import Board from './components/Board'
 import Settings from './components/Settings'
 import About from './components/About'
+import Account from './components/Account'
 
 import { THEME } from './resources/constants'
 import { handleMessage } from './resources/handlers'
@@ -21,6 +22,7 @@ import "bootswatch/dist/flatly/bootstrap.min.css"
 const routes = {
   '/': () => props => <Home {...props} />,
   '/about': () => props => <About {...props} />,
+  '/account': () => props => <Account {...props} />,
   '/:board*': ({board}) => props => <Board board={board} {...props} />
 }
 
