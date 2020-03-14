@@ -32,7 +32,9 @@ const ContextButton = props => {
     data.append('subject', subject)
     data.append('file', file)
     data.append('board', pathChunks[1])
-    data.append('thread', pathChunks[2])
+    if (pathChunks[2]) {
+      data.append('thread', pathChunks[2])
+    }
     axios.post( NEW_URL, data, {
       headers: {
         'Content-Type': 'multipart/form-data'
