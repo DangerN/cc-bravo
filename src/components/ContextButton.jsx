@@ -25,13 +25,13 @@ const ContextButton = props => {
 
   console.log(context);
   const handleFormSubmit = event => {
+    event.preventDefault()
 
     if (context === "board" && !file && !text) {
       alert("u need an image and message to start a new thread")
       return
     }
 
-    event.preventDefault()
     const pathChunks = path.split('/')
     const data = new FormData()
     data.append('name', name)

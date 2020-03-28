@@ -69,6 +69,14 @@ export default () => {
     if (socketState === 1) {
       sendMessage('base')
     }
+
+    if (socketState === 1) {
+      const boardsKeys = Object.keys(boards)
+      boards.boardSubs.forEach(sub => {
+        !boardsKeys.includes(sub) && sendMessage(sub)
+      });
+    }
+
   },[socketState])
 
   // Request information about specific board
@@ -88,6 +96,10 @@ export default () => {
       sendMessage(boards.boardSubs[boards.boardSubs.length -1])
     }
   },[boards.boardSubs])
+
+  useEffect(() => {
+    console.log(boards);
+  },[boards])
 
   return (
     <>
