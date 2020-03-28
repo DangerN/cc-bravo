@@ -23,7 +23,14 @@ const ContextButton = props => {
   const handleName = event => setName(event.target.value)
   const handleSubject = event => setSubject(event.target.value)
 
+  console.log(context);
   const handleFormSubmit = event => {
+
+    if (context === "board" && !file && !text) {
+      alert("u need an image and message to start a new thread")
+      return
+    }
+
     event.preventDefault()
     const pathChunks = path.split('/')
     const data = new FormData()
