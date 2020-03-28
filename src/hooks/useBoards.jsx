@@ -10,8 +10,7 @@ const useSettings = () => {
       case 'boardList':
         return {...state, boardList: action.payload.boardList}
       case 'boardDump':
-        const newState = {...state, ...action.payload.boardDump}
-        return newState
+        return {...state, ...action.payload.boardDump}
       case 'addBoardSub':
         return {...state, boardSubs: [...state.boardSubs, action.payload]}
       case 'fullImage':
