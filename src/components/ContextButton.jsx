@@ -27,8 +27,12 @@ const ContextButton = props => {
   const handleFormSubmit = event => {
     event.preventDefault()
 
-    if (context === "board" && !file && !text) {
-      alert("u need an image and message to start a new thread")
+    if (!file && !text) {
+      if (context === "board") {
+        alert("u need an image and message to start a new thread")
+      } else {
+        alert("u need an image or message to post")
+      }
       return
     }
 
