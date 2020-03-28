@@ -31,8 +31,8 @@ const ChanNav = (props) => {
         <Nav >
           <Nav.Link onClick={showSettings}>Settings</Nav.Link>
           <Settings settingsState={settingsState} settingsDis={settingsDis} visible={settingsVis} setVisible={setSettingsVis }/>
-          <Nav.Link as={A} href='account'>Account</Nav.Link>
-          <Nav.Link as={A} href='about'>About</Nav.Link>
+          <Nav.Link as={A} href='/account'>Account</Nav.Link>
+          <Nav.Link as={A} href='/about'>About</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
